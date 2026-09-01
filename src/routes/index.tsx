@@ -2,7 +2,6 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 
 import logo from "@/assets/proofolio-logo.png.asset.json";
-import mark from "@/assets/proofolio-icon.png.asset.json";
 import { Reveal } from "@/components/site/reveal";
 
 export const Route = createFileRoute("/")({
@@ -717,8 +716,7 @@ function Index() {
         <div className="mx-auto max-w-[1240px] px-6 py-14 md:px-10">
           <div className="flex flex-col gap-10 md:flex-row md:items-end md:justify-between">
             <div>
-              <img src={mark.url} alt="" aria-hidden="true" className="h-6 w-auto logo-blend" />
-              <Wordmark className="mt-4 h-9" />
+              <Wordmark className="h-10" />
               <p className="mt-5 text-sm text-muted-foreground">
                 Your career presence, built around you.
               </p>
