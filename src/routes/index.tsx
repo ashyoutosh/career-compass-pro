@@ -723,9 +723,6 @@ function Index() {
           <div className="flex flex-col gap-10 md:flex-row md:items-end md:justify-between">
             <div>
               <Wordmark className="h-[120px]" />
-              <p className="mt-5 text-sm text-muted-foreground">
-                Your career presence, built around you.
-              </p>
             </div>
             <nav aria-label="Footer" className="flex flex-wrap gap-x-8 gap-y-3 text-sm">
               {[
