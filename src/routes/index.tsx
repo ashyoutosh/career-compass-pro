@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 
+import heroMobile from "@/assets/hero-mobile.png.asset.json";
 import logo from "@/assets/proofolio-logo.png.asset.json";
 import { Reveal } from "@/components/site/reveal";
 
@@ -265,6 +266,11 @@ function Index() {
                   A personalised digital presence system for students — built around your field,
                   your goals and your college life.
                 </p>
+                <img
+                  src={heroMobile.url}
+                  alt="Student digital presence preview with LinkedIn, GitHub and portfolio cards"
+                  className="mt-8 block w-full rounded-lg lg:hidden"
+                />
               </Reveal>
               <Reveal as="div" delay={220} className="mt-12 flex flex-col gap-3 sm:flex-row">
                 <Cta href="#plans" variant="signal">
