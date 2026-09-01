@@ -175,7 +175,7 @@ function Nav() {
     >
       <div className="mx-auto flex max-w-[1240px] items-center justify-between px-6 py-4 md:px-10">
         <a href="#top" aria-label="PROOFOLIO home" className="shrink-0">
-          <Wordmark className="h-7 md:h-8" />
+          <Wordmark className="h-14 md:h-16" />
         </a>
 
         <nav aria-label="Primary" className="hidden items-center gap-9 md:flex">
