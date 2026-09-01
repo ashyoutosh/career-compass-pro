@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 
+import heroMobile from "@/assets/hero-mobile.png.asset.json";
 import logo from "@/assets/proofolio-logo.png.asset.json";
 import { Reveal } from "@/components/site/reveal";
 
