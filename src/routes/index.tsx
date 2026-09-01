@@ -722,7 +722,7 @@ function Index() {
         <div className="mx-auto max-w-[1240px] px-6 py-14 md:px-10">
           <div className="flex flex-col gap-10 md:flex-row md:items-end md:justify-between">
             <div>
-              <Wordmark className="h-10" />
+              <Wordmark className="h-[120px]" />
               <p className="mt-5 text-sm text-muted-foreground">
                 Your career presence, built around you.
               </p>
