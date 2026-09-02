@@ -58,7 +58,7 @@ function Ring({
       style={{ animationDuration: duration, transformStyle: "preserve-3d" }}
     >
       {marks.map((m, i) => {
-        const angle = (360 / marks.length) * i;
+        const angle = (360 / marks.length) * i + offset;
         return (
           <div
             key={m.name}
