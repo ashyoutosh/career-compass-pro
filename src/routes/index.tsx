@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 
+import aiHumanizer from "@/assets/ai-humanizer.png.asset.json";
 import heroMobile from "@/assets/hero-mobile.png.asset.json";
 import logo from "@/assets/proofolio-logo.png.asset.json";
 import { Reveal } from "@/components/site/reveal";
@@ -643,6 +644,11 @@ function Index() {
                 </p>
               </Reveal>
               <Reveal delay={100} className="md:col-span-7">
+                <img
+                  src={aiHumanizer.url}
+                  alt="AI Humanizer preview showing a refined project report with natural language feedback"
+                  className="mb-8 w-full rounded-lg border border-border"
+                />
                 <div className="grid gap-6 border-t border-border pt-6 sm:grid-cols-2 sm:border-l sm:border-t-0 sm:pl-10 sm:pt-0">
                   <div>
                     <p className="label">AI Humanizer — ₹199</p>
