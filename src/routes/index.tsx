@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import aiHumanizer from "@/assets/ai-humanizer.png.asset.json";
 import heroMobile from "@/assets/hero-mobile.png.asset.json";
 import logo from "@/assets/proofolio-logo.png.asset.json";
+import { ToolkitOrbit } from "@/components/site/orbit";
 import { Reveal } from "@/components/site/reveal";
 
 export const Route = createFileRoute("/")({
