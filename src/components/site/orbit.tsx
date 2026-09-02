@@ -95,7 +95,7 @@ export function ToolkitOrbit() {
       className="relative mx-auto aspect-square w-full max-w-[300px] select-none sm:max-w-[380px] lg:max-w-[460px]"
       style={{
         ["--orbit-r" as string]: "clamp(112px, 33vw, 186px)",
-        ["--orbit-r2" as string]: "clamp(64px, 19vw, 108px)",
+        ["--orbit-r2" as string]: "clamp(92px, 27vw, 134px)",
         perspective: "900px",
       }}
       aria-hidden="true"
