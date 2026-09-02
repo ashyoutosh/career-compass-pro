@@ -32,7 +32,8 @@ const MARKS: Mark[] = [
 const OUTER = MARKS.slice(0, 4);
 const INNER = MARKS.slice(4);
 
-const TILT = 58;
+const TILT = 0;
+const INNER_OFFSET = 45;
 const OUT_DUR = "84s";
 const IN_DUR = "58s";
 
@@ -42,12 +43,14 @@ function Ring({
   duration,
   reverse,
   size,
+  offset = 0,
 }: {
   marks: Mark[];
   radiusVar: string;
   duration: string;
   reverse?: boolean;
   size: string;
+  offset?: number;
 }) {
   return (
     <div
@@ -55,7 +58,7 @@ function Ring({
       style={{ animationDuration: duration, transformStyle: "preserve-3d" }}
     >
       {marks.map((m, i) => {
-        const angle = (360 / marks.length) * i;
+        const angle = (360 / marks.length) * i + offset;
         return (
           <div
             key={m.name}
@@ -94,8 +97,8 @@ export function ToolkitOrbit() {
     <div
       className="relative mx-auto aspect-square w-full max-w-[300px] select-none sm:max-w-[380px] lg:max-w-[460px]"
       style={{
-        ["--orbit-r" as string]: "clamp(150px, 40vw, 210px)",
-        ["--orbit-r2" as string]: "clamp(108px, 30vw, 150px)",
+        ["--orbit-r" as string]: "clamp(108px, 32vw, 190px)",
+        ["--orbit-r2" as string]: "clamp(66px, 19vw, 112px)",
         perspective: "900px",
       }}
       aria-hidden="true"
@@ -148,6 +151,7 @@ export function ToolkitOrbit() {
           radiusVar="--orbit-r2"
           duration={IN_DUR}
           reverse
+          offset={INNER_OFFSET}
           size="h-9 w-9 sm:h-11 sm:w-11"
         />
       </div>
