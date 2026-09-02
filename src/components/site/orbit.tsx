@@ -32,7 +32,8 @@ const MARKS: Mark[] = [
 const OUTER = MARKS.slice(0, 4);
 const INNER = MARKS.slice(4);
 
-const TILT = 58;
+const TILT = 0;
+const INNER_OFFSET = 45;
 const OUT_DUR = "84s";
 const IN_DUR = "58s";
 
@@ -42,12 +43,14 @@ function Ring({
   duration,
   reverse,
   size,
+  offset = 0,
 }: {
   marks: Mark[];
   radiusVar: string;
   duration: string;
   reverse?: boolean;
   size: string;
+  offset?: number;
 }) {
   return (
     <div
