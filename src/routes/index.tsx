@@ -40,14 +40,6 @@ const YEARS = [
   { year: "Final Year", steps: "Apply → Interview → Demonstrate" },
 ];
 
-const TOOLS = [
-  { name: "LinkedIn", desc: "Professional identity, networking and visibility." },
-  { name: "GitHub", desc: "Code, technical projects and development work." },
-  { name: "Behance", desc: "Design work and visual case studies." },
-  { name: "Dribbble", desc: "Design exploration and creative work." },
-  { name: "Notion", desc: "Organised knowledge, projects and documentation." },
-  { name: "Personal Website", desc: "Your own professional home on the internet." },
-];
 
 const FLOW = [
   {
@@ -479,19 +471,6 @@ function Index() {
                 You don't need all of them. You need the right ones for where you're going.
               </p>
 
-              <ul className="mt-10 border-t border-border">
-                {TOOLS.map((t) => (
-                  <li
-                    key={t.name}
-                    className="group grid gap-1 border-b border-border py-5 sm:grid-cols-[12rem_1fr] sm:gap-8"
-                  >
-                    <p className="text-base font-medium transition-colors group-hover:text-signal">
-                      {t.name}
-                    </p>
-                    <p className="text-sm leading-relaxed text-muted-foreground">{t.desc}</p>
-                  </li>
-                ))}
-              </ul>
             </Reveal>
 
             <Reveal delay={120} className="lg:col-span-5 lg:pl-10">
