@@ -40,14 +40,6 @@ const YEARS = [
   { year: "Final Year", steps: "Apply → Interview → Demonstrate" },
 ];
 
-const TOOLS = [
-  { name: "LinkedIn", desc: "Professional identity, networking and visibility." },
-  { name: "GitHub", desc: "Code, technical projects and development work." },
-  { name: "Behance", desc: "Design work and visual case studies." },
-  { name: "Dribbble", desc: "Design exploration and creative work." },
-  { name: "Notion", desc: "Organised knowledge, projects and documentation." },
-  { name: "Personal Website", desc: "Your own professional home on the internet." },
-];
 
 const FLOW = [
   {
