@@ -29,64 +29,132 @@ const MARKS: Mark[] = [
   WEB,
 ];
 
-const DURATION = "72s";
+const OUTER = MARKS.slice(0, 4);
+const INNER = MARKS.slice(4);
 
-export function ToolkitOrbit() {
+const TILT = 62;
+const OUT_DUR = "84s";
+const IN_DUR = "58s";
+
+function Ring({
+  marks,
+  radiusVar,
+  duration,
+  reverse,
+  size,
+}: {
+  marks: Mark[];
+  radiusVar: string;
+  duration: string;
+  reverse?: boolean;
+  size: string;
+}) {
   return (
     <div
-      className="relative mx-auto aspect-square w-full max-w-[280px] select-none sm:max-w-[360px] lg:max-w-[440px]"
-      style={{ ["--orbit-r" as string]: "clamp(104px, 32vw, 176px)" }}
-      aria-hidden="true"
+      className={reverse ? "absolute inset-0 orbit-spin-rev" : "absolute inset-0 orbit-spin"}
+      style={{ animationDuration: duration, transformStyle: "preserve-3d" }}
     >
-      {/* orbital line */}
-      <div
-        className="absolute left-1/2 top-1/2 rounded-full border border-border"
-        style={{
-          width: "calc(var(--orbit-r) * 2)",
-          height: "calc(var(--orbit-r) * 2)",
-          transform: "translate(-50%, -50%)",
-        }}
-      />
-
-      {/* center tile */}
-      <div className="absolute left-1/2 top-1/2 flex h-16 w-16 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-xl border border-border bg-white shadow-[0_10px_30px_-12px_rgba(17,17,17,0.25)] sm:h-20 sm:w-20">
-        <img src={icon.url} alt="" className="h-9 w-9 object-contain sm:h-11 sm:w-11" />
-      </div>
-
-      {/* rotating ring */}
-      <div
-        className="absolute inset-0 orbit-spin"
-        style={{ animationDuration: DURATION }}
-      >
-        {MARKS.map((m, i) => {
-          const angle = (360 / MARKS.length) * i;
-          return (
+      {marks.map((m, i) => {
+        const angle = (360 / marks.length) * i;
+        return (
+          <div
+            key={m.name}
+            className="absolute left-1/2 top-1/2"
+            style={{
+              transform: `translate(-50%, -50%) rotate(${angle}deg) translateY(calc(var(${radiusVar}) * -1)) rotate(${-angle}deg)`,
+              transformStyle: "preserve-3d",
+            }}
+          >
             <div
-              key={m.name}
-              className="absolute left-1/2 top-1/2"
-              style={{
-                transform: `translate(-50%, -50%) rotate(${angle}deg) translateY(calc(var(--orbit-r) * -1)) rotate(${-angle}deg)`,
-              }}
+              className={reverse ? "orbit-spin" : "orbit-spin-rev"}
+              style={{ animationDuration: duration, transformStyle: "preserve-3d" }}
             >
-              <div className="orbit-spin-rev" style={{ animationDuration: DURATION }}>
+              {/* stand the tile back up out of the tilted plane */}
+              <div style={{ transform: `rotateX(${-TILT}deg)` }}>
                 <div
-                  className="flex h-10 w-10 items-center justify-center rounded-lg border border-border bg-white shadow-[0_6px_18px_-10px_rgba(17,17,17,0.35)] sm:h-12 sm:w-12"
+                  className={`flex ${size} items-center justify-center rounded-xl border border-border bg-white shadow-[0_18px_30px_-16px_rgba(17,17,17,0.45),0_2px_6px_-2px_rgba(17,17,17,0.12)] backdrop-blur-sm`}
                   title={m.name}
                 >
-                  <svg
-                    viewBox="0 0 24 24"
-                    className="h-5 w-5 sm:h-6 sm:w-6"
-                    fill={m.hex}
-                    role="img"
-                  >
+                  <svg viewBox="0 0 24 24" className="h-1/2 w-1/2" fill={m.hex} role="img">
                     <title>{m.name}</title>
                     <path d={m.path} />
                   </svg>
                 </div>
               </div>
             </div>
-          );
-        })}
+          </div>
+        );
+      })}
+    </div>
+  );
+}
+
+export function ToolkitOrbit() {
+  return (
+    <div
+      className="relative mx-auto aspect-square w-full max-w-[300px] select-none sm:max-w-[380px] lg:max-w-[460px]"
+      style={{
+        ["--orbit-r" as string]: "clamp(112px, 33vw, 186px)",
+        ["--orbit-r2" as string]: "clamp(64px, 19vw, 108px)",
+        perspective: "900px",
+      }}
+      aria-hidden="true"
+    >
+      {/* soft depth halos */}
+      <div
+        className="pointer-events-none absolute left-1/2 top-1/2 h-[86%] w-[86%] -translate-x-1/2 -translate-y-1/2 rounded-full"
+        style={{
+          background:
+            "radial-gradient(circle at 50% 45%, color-mix(in oklab, var(--signal) 12%, transparent) 0%, color-mix(in oklab, var(--signal) 5%, transparent) 42%, transparent 70%)",
+          filter: "blur(6px)",
+        }}
+      />
+      <div
+        className="pointer-events-none absolute left-1/2 top-1/2 h-[52%] w-[52%] -translate-x-1/2 -translate-y-1/2 rounded-full"
+        style={{
+          background:
+            "radial-gradient(circle at 50% 45%, color-mix(in oklab, var(--signal) 16%, transparent) 0%, transparent 72%)",
+          filter: "blur(10px)",
+        }}
+      />
+
+      {/* tilted 3D stage */}
+      <div
+        className="absolute inset-0"
+        style={{ transform: `rotateX(${TILT}deg)`, transformStyle: "preserve-3d" }}
+      >
+        {/* outer orbital line */}
+        <div
+          className="absolute left-1/2 top-1/2 rounded-full border border-border/80"
+          style={{
+            width: "calc(var(--orbit-r) * 2)",
+            height: "calc(var(--orbit-r) * 2)",
+            transform: "translate(-50%, -50%)",
+          }}
+        />
+        {/* inner orbital line */}
+        <div
+          className="absolute left-1/2 top-1/2 rounded-full border border-dashed border-border"
+          style={{
+            width: "calc(var(--orbit-r2) * 2)",
+            height: "calc(var(--orbit-r2) * 2)",
+            transform: "translate(-50%, -50%)",
+          }}
+        />
+
+        <Ring marks={OUTER} radiusVar="--orbit-r" duration={OUT_DUR} size="h-11 w-11 sm:h-14 sm:w-14" />
+        <Ring
+          marks={INNER}
+          radiusVar="--orbit-r2"
+          duration={IN_DUR}
+          reverse
+          size="h-9 w-9 sm:h-11 sm:w-11"
+        />
+      </div>
+
+      {/* center tile */}
+      <div className="absolute left-1/2 top-1/2 flex h-[68px] w-[68px] -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-2xl border border-border bg-white shadow-[0_26px_50px_-20px_rgba(17,17,17,0.5),0_3px_10px_-4px_rgba(17,17,17,0.16)] sm:h-[88px] sm:w-[88px]">
+        <img src={icon.url} alt="" className="h-9 w-9 object-contain sm:h-12 sm:w-12" />
       </div>
     </div>
   );
