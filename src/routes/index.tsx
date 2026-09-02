@@ -653,8 +653,9 @@ function Index() {
                   <div>
                     <p className="label">AI Humanizer — ₹199</p>
                     <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-                      Up to 5 pages per assignment. We humanise AI-assisted writing so it reads
-                      clearer, more natural and closer to your own voice.
+                      Up to 15 pages per assignment. Extra pages at extra cost. We humanise
+                      AI-assisted writing so it reads clearer, more natural and closer to your own
+                      voice.
                     </p>
                   </div>
                   <div>
