@@ -97,8 +97,8 @@ export function ToolkitOrbit() {
     <div
       className="relative mx-auto aspect-square w-full max-w-[300px] select-none sm:max-w-[380px] lg:max-w-[460px]"
       style={{
-        ["--orbit-r" as string]: "clamp(150px, 40vw, 210px)",
-        ["--orbit-r2" as string]: "clamp(108px, 30vw, 150px)",
+        ["--orbit-r" as string]: "clamp(108px, 32vw, 190px)",
+        ["--orbit-r2" as string]: "clamp(66px, 19vw, 112px)",
         perspective: "900px",
       }}
       aria-hidden="true"
@@ -151,6 +151,7 @@ export function ToolkitOrbit() {
           radiusVar="--orbit-r2"
           duration={IN_DUR}
           reverse
+          offset={INNER_OFFSET}
           size="h-9 w-9 sm:h-11 sm:w-11"
         />
       </div>
