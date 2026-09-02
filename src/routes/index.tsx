@@ -465,8 +465,8 @@ function Index() {
 
         {/* 05 — TOOLKIT */}
         <section className="mx-auto max-w-[1240px] px-6 py-24 md:px-10 md:py-32">
-          <div className="grid gap-12 lg:grid-cols-12">
-            <Reveal className="lg:col-span-5">
+          <div className="grid items-center gap-12 lg:grid-cols-12">
+            <Reveal className="lg:col-span-7">
               <SectionLabel n="05">Your digital toolkit</SectionLabel>
               <h2 className="text-4xl md:text-5xl">The right tools. Connected around you.</h2>
               <p className="mt-8 max-w-md text-base leading-relaxed text-muted-foreground">
@@ -477,10 +477,8 @@ function Index() {
               <p className="mt-6 max-w-md text-base leading-relaxed">
                 You don't need all of them. You need the right ones for where you're going.
               </p>
-            </Reveal>
 
-            <Reveal delay={120} className="lg:col-span-7 lg:pl-10">
-              <ul className="border-t border-border">
+              <ul className="mt-10 border-t border-border">
                 {TOOLS.map((t) => (
                   <li
                     key={t.name}
@@ -494,7 +492,12 @@ function Index() {
                 ))}
               </ul>
             </Reveal>
+
+            <Reveal delay={120} className="lg:col-span-5 lg:pl-10">
+              <ToolkitOrbit />
+            </Reveal>
           </div>
+
         </section>
 
         {/* 06 — WHAT WE BUILD */}
