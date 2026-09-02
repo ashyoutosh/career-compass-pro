@@ -543,17 +543,6 @@ function Index() {
           </div>
         </section>
 
-        {/* Trust strip */}
-        <section className="mx-auto max-w-[1240px] px-6 py-20 md:px-10 md:py-24">
-          <Reveal className="grid gap-x-12 gap-y-8 sm:grid-cols-2 lg:grid-cols-3">
-            {TRUST.map((t) => (
-              <div key={t.k} className="border-t border-border pt-5">
-                <p className="label">{t.k}</p>
-                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{t.v}</p>
-              </div>
-            ))}
-          </Reveal>
-        </section>
 
         {/* 07 — PLANS */}
         <section id="plans" className="border-t border-border">
